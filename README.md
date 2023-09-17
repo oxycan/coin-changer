@@ -1,4 +1,4 @@
-# coin-changer
+# Coin Changer
 
 # Description: 
 
