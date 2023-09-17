@@ -268,7 +268,7 @@ namespace CoinChanger.UnitTests
         #endregion
 
         [TestCaseSource(nameof(testCombinations))]
-        public void TestKnownCombinations(TestCombination testCombination)
+        public void TestWithKnownCombinations(TestCombination testCombination)
         {
             // Act
             var result = service.CalculateWaysToMakeChange(testCombination.Amount);
@@ -276,6 +276,23 @@ namespace CoinChanger.UnitTests
             // Assert
             result.NumberOfWays.Should().Be(testCombination.ExpectedNumberOfWays);
             IsCombinationValid(testCombination, result).Should().BeTrue();
+        }
+
+        [Test]
+        public void CompareToDpApproachResults()
+        {
+            // Arrange 
+            var dpService = new DpCoinChangeService();
+
+            for (int amount = 1; amount < 1000; amount++)
+            {
+                // Act
+                var serviceResult = service.CalculateWaysToMakeChange(amount);
+                int dpResult = dpService.CountWaysToMakeChange(amount);
+
+                // Assert
+                serviceResult.NumberOfWays.Should().Be(dpResult);
+            }
         }
 
         bool IsCombinationValid(TestCombination testCombination, ServiceResult serviceResult)

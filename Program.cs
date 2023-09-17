@@ -1,7 +1,7 @@
 ﻿using CoinChanger;
 
 int oneDollarInCents = 100;
-int amount = oneDollarInCents;
+int amount = 15;
 
 var coinChangeService = new CoinChangeService();
 var calculationResult = coinChangeService.CalculateWaysToMakeChange(amount);
