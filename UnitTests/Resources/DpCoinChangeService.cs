@@ -1,4 +1,4 @@
-﻿namespace CoinChanger
+﻿namespace CoinChanger.UnitTests
 {
     public class DpCoinChangeService
     {
