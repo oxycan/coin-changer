@@ -18,7 +18,16 @@ while (true)
     CreateResultMessage(amount, calculationResult);
 }
 
-static void WriteCombinations(ServiceResult calculationResult)
+static void CreateResultMessage(int amount, ServiceResult calculationResult)
+{
+    WriteCombinations(amount, calculationResult);
+    Console.WriteLine("");
+
+    Console.WriteLine($"There are {calculationResult.NumberOfWays} ways to make a change for {amount} cents. ");
+    Console.WriteLine("");
+}
+
+static void WriteCombinations(int amount, ServiceResult calculationResult)
 {
     Console.WriteLine("");
     Console.WriteLine($"Change combinations for {amount} cents: ");
@@ -27,15 +36,4 @@ static void WriteCombinations(ServiceResult calculationResult)
     {
         Console.WriteLine(CoinCombinationDescriptionService.CreateCoinCombinationDescription(combination));
     }
-}
-
-static void CreateResultMessage(int amount, ServiceResult calculationResult)
-{
-
-
-    WriteCombinations(calculationResult);
-    Console.WriteLine("");
-
-    Console.WriteLine($"There are {calculationResult.NumberOfWays} ways to make a change for {amount} cents. ");
-    Console.WriteLine("");
 }

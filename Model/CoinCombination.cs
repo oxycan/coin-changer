@@ -2,6 +2,11 @@
 {
     public class CoinCombination
     {
+        public int QuarterCount { get; }
+        public int DimeCount { get; }
+        public int NickelCount { get; set; }
+        public int CentCount { get; set; }
+
         public CoinCombination(int quarterCount, int dimeCount, int nickelCount, int centCount)
         {
             QuarterCount = quarterCount;
@@ -9,11 +14,6 @@
             NickelCount = nickelCount;
             CentCount = centCount;
         }
-
-        public int QuarterCount { get; }
-        public int DimeCount { get; }
-        public int NickelCount { get; set; }
-        public int CentCount { get; set; }
 
         public static CoinCombination Create(int quarterCount, int dimeCount, int nickelCount, int centCount)
         {
