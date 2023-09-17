@@ -295,6 +295,29 @@ namespace CoinChanger.UnitTests
             }
         }
 
+        [TestCase(0)]
+        [TestCase(-1)]
+        public void CalculateWaysToMakeChange_AmountIsLessThanOne_ReturnsInvalidAmountResult(int amount)
+        {
+            // Act
+            var serviceResult = service.CalculateWaysToMakeChange(amount);
+
+            // Assert 
+            serviceResult.NumberOfWays.Should().Be(0);
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        public void CalculateWaysToMakeChange_AmountIsGreaterThanZero_ReturnsSuccessResult(int amount)
+        {
+            // Act
+            var serviceResult = service.CalculateWaysToMakeChange(amount);
+
+            // Assert 
+            serviceResult.NumberOfWays.Should().BeGreaterThan(0);
+        }
+
+
         bool IsCombinationValid(TestCombination testCombination, ServiceResult serviceResult)
         {
             return serviceResult.Combinations.Exists(x => x.QuarterCount == testCombination.Combination.QuarterCount
